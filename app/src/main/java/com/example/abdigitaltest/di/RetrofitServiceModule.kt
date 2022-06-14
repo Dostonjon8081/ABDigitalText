@@ -19,15 +19,21 @@ object RetrofitServiceModule {
     @BaseUrl
     fun getBaseUrl() = BASE_URL
 
+    @Singleton
+    @Provides
+    fun provideConverterFactory(): GsonConverterFactory =
+        GsonConverterFactory.create()
+
     @Provides
     @Singleton
     fun getRetrofitInstance(
         okHttpClient: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory,
         @BaseUrl baseUrl: String
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(gsonConverterFactory)
             .client(okHttpClient)
             .build()
 

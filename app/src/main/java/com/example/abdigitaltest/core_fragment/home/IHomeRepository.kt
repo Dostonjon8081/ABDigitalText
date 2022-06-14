@@ -1,11 +1,11 @@
 package com.example.abdigitaltest.core_fragment.home
 
-import android.util.Log
+import com.example.abdigitaltest.util.extension.any_logd
+import com.example.abdigitaltest.util.extension.logd
 import com.example.abdigitaltest.util.network.NetworkService
-import timber.log.Timber
 import javax.inject.Inject
 
-interface IHomeRepository{
+interface IHomeRepository {
     suspend fun getCharacters()
 }
 
@@ -13,8 +13,16 @@ class HomeRepositoryImpl @Inject constructor(
     private val networkService: NetworkService
 ) : IHomeRepository {
     override suspend fun getCharacters() {
-        Timber.log(0,"digitals" ,networkService.getCharacters())
-        Log.d("digitals", networkService.getCharacters().toString())
-
+        val networkResult = networkService.getCharacters()
+        if (networkResult.isSuccessful) {
+            val resultBody = networkResult.body()
+            if (resultBody != null) {
+                logd(resultBody!!.next!!)
+                logd(resultBody.count.toString())
+                any_logd(resultBody.previous?.toString()!!)
+                logd(resultBody.results!![1].name)
+                logd(resultBody.results[1].starships.toString())
+            }
+        }
     }
 }
