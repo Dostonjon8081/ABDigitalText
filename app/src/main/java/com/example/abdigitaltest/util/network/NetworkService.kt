@@ -15,5 +15,8 @@ interface NetworkService {
 
     @GET("people")
     suspend fun getCharacters():Response<CharactersResponseModel>
-//    suspend fun getCharacters():Response<*>
+
+    @GET("people/")
+    suspend fun searchCharacter(@Query("search") name:String):Response<CharactersResponseModel>
+
 }

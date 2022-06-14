@@ -14,17 +14,24 @@ class HomeViewModel @Inject constructor(
     init {
         Timber.d("viewmodel created")
         getCharacters()
+        searchCharacter()
     }
 
 //    private val _charachtersResponseApi:MutableLiveData<Event<NetworkResult<CharactersResponseModel>>> = MutableLiveData()
 //       val charactersResponseApi:LiveData<Event<NetworkResult<CharactersResponseModel>>> = _charachtersResponseApi
 
-    private fun getCharacters(){
+    private fun getCharacters() {
         vmScope.launch {
             loading.postValue(true)
             interactor.getCharacters()
         }.invokeOnCompletion {
             loading.postValue(false)
+        }
+    }
+
+    private fun searchCharacter() {
+        vmScope.launch {
+            interactor.searchCharacter("Luke Skywalker")
         }
     }
 }

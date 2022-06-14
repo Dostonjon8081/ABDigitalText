@@ -2,11 +2,10 @@ package com.example.abdigitaltest.util.local_db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 
 @Database(
     entities = [
-        CharacterModel::class
+        CharacterEntity::class
     ],
     version = 1,
     exportSchema = false

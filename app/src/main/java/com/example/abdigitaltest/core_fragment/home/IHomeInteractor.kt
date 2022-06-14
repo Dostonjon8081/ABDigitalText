@@ -4,6 +4,7 @@ import javax.inject.Inject
 
 interface IHomeInteractor {
     suspend fun getCharacters()
+    suspend fun searchCharacter(name:String)
 }
 
 class HomeInteractorImpl @Inject constructor(
@@ -11,6 +12,10 @@ class HomeInteractorImpl @Inject constructor(
 ) : IHomeInteractor {
     override suspend fun getCharacters() {
         repository.getCharacters()
+    }
+
+    override suspend fun searchCharacter(name: String) {
+        repository.searchCharacters(name)
     }
 
 }

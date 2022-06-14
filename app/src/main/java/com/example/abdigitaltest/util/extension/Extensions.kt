@@ -52,6 +52,3 @@ fun View.isNotVisible(): Boolean {
 fun Any.logd(text: String) {
     Log.d("digitals", text)
 }
-fun Any.any_logd(any: Any) {
-    Log.d("digitals", any.toString())
-}
