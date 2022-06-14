@@ -3,7 +3,7 @@ package com.example.abdigitaltest.core_fragment.home
 import com.google.gson.annotations.SerializedName
 
 
-data class CharactersResponseModel(
+data class CharactersModel(
     val count: Int=0,
     val next: String="",
     val previous: String?="previous",

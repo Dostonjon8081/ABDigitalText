@@ -3,15 +3,15 @@ package com.example.abdigitaltest.core_fragment.home
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class CharactersDto(
-    val count: Int? = null,
-    val next: String? = null,
-    val previous: String? = null,
-    val result: List<ResultCharacterDto>
-) : Parcelable
 
-@Parcelize
+data class CharactersDto(
+    val count: Int? ,
+    val next: String?,
+    val previous: String? ,
+    val results: List<ResultCharacterDto>?
+)
+
+
 data class ResultCharacterDto(
     val name: String?,
     val height: String?,
@@ -26,8 +26,7 @@ data class ResultCharacterDto(
     val species: List<String>?,
     val vehicles: List<String>?,
     val starships: List<String>?,
-    val created: List<String>?,
-    val edited: List<String>?,
-    val url: List<String>?,
-
-) : Parcelable
+    val created: String?,
+    val edited: String?,
+    val url: String?
+)
