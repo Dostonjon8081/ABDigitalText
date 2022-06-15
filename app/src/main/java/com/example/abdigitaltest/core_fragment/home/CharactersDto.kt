@@ -29,4 +29,4 @@ data class ResultCharacterDto(
     val created: String?,
     val edited: String?,
     val url: String?
-):Parcelable,Person
+):Parcelable

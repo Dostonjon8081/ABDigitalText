@@ -43,8 +43,8 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.VH>() {
         private lateinit var model: CharactersRvModel
 
         init {
-            binding.favBtn.setOnClickListener {
-                if (!model.isFavourite) {
+            binding.root.setOnClickListener {
+               /* if (!model.isFavourite) {
                     binding.favBtn.setImageResource(R.drawable.ic_fav)
                     iClickCharacterItem.clickedItem(model)
                     model.isFavourite = true
@@ -52,7 +52,8 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.VH>() {
                     binding.favBtn.setImageResource(R.drawable.ic_fav_empty)
                     iClickCharacterItem.clickedItem(model)
                     model.isFavourite = false
-                }
+                }*/
+                iClickCharacterItem.clickedItem(model)
             }
         }
 
@@ -69,14 +70,6 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.VH>() {
             binding.rvItemEyeColor.text = "eyeColor: ${model.eye_color}"
             binding.rvItemBirthYear.text = "birthYear: ${model.birth_year}"
             binding.rvItemGender.text = "gender: ${model.gender}"
-            binding.rvItemHomeWorld.text = "homeWorld: ${model.homeworld}"
-            binding.rvItemFilms.text = "films: ${model.films.toString()}"
-            binding.rvItemSpecies.text = "species: ${model.species.toString()}"
-            binding.rvItemVehicles.text = "vehicles: ${model.vehicles.toString()}"
-            binding.rvItemStartShip.text = "startShip: ${model.starships}"
-            binding.rvItemCreated.text = "created: ${model.created}"
-            binding.rvItemEdited.text = "edited: ${model.edited}"
-            binding.rvItemUrl.text = "url: ${model.url}"
         }
     }
 }

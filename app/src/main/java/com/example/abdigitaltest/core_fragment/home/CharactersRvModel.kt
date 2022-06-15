@@ -4,7 +4,6 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-interface Person
 @Parcelize
 data class CharactersRvModel(
     val name: String="",
@@ -24,4 +23,4 @@ data class CharactersRvModel(
     val edited: String,
     val url: String,
     var isFavourite:Boolean = false
-    ):Parcelable,Person
+    ):Parcelable
