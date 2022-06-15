@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.example.abdigitaltest.MainFragmentDirections
 import com.example.abdigitaltest.base.BaseFragment
 import com.example.abdigitaltest.databinding.FragmentHomeBinding
 import com.example.abdigitaltest.util.extension.logd
@@ -15,7 +16,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     IClickCharacterItem {
 
     private val homeViewModel: HomeViewModel by viewModels()
-    private val rvList = mutableListOf<ResultCharacterDto>()
+    private val rvList = mutableListOf<CharactersRvModel>()
     private val characterAdapter by lazy(LazyThreadSafetyMode.NONE) { CharacterAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,12 +27,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         homeViewModel.loading.observe(viewLifecycleOwner) {
             binding.homePb.isVisible = it
         }
-        homeViewModel.charactersResponseApi.observe(viewLifecycleOwner) { dto ->
-            characterAdapter.initDat(dto.results!!)
+        homeViewModel.charactersResponseApi.observe(viewLifecycleOwner) { model ->
+            characterAdapter.initDat(model)
         }
 
-        homeViewModel.searchCharacter.observe(viewLifecycleOwner){
-            characterAdapter.initDat(it.results!!)
+        homeViewModel.searchCharacter.observe(viewLifecycleOwner) { model ->
+            characterAdapter.initDat(model)
         }
 
         characterAdapter.initClick(this)
@@ -50,8 +51,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         })
     }
 
-    override fun clickedItem(characterDto: ResultCharacterDto) {
-logd("clicked ")
+    override fun clickedItem(model: CharactersRvModel) {
+        getBaseActivity {
+            it.navController?.navigate(MainFragmentDirections.actionMainFragmentToCharacterDetailFragment(model))
+//            it.bottomNavController?.navigate(HomeFragmentDirections.actionHomeToCharacterDetailFragment(model))
+        }
     }
 
 }

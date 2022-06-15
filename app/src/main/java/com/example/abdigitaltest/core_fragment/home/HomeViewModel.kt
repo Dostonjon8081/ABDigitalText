@@ -19,8 +19,8 @@ class HomeViewModel @Inject constructor(
 
     }
 
-    private val _charactersResponseApi: MutableLiveData<CharactersDto> = MutableLiveData()
-    val charactersResponseApi: LiveData<CharactersDto> = _charactersResponseApi
+    private val _charactersResponseApi: MutableLiveData<List<CharactersRvModel>> = MutableLiveData()
+    val charactersResponseApi: LiveData<List<CharactersRvModel>> = _charactersResponseApi
 
     fun getCharacters() {
         vmScope.launch {
@@ -31,8 +31,8 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private val _searchCharacter: MutableLiveData<CharactersDto> = MutableLiveData()
-    val searchCharacter: LiveData<CharactersDto> = _searchCharacter
+    private val _searchCharacter: MutableLiveData<List<CharactersRvModel>> = MutableLiveData()
+    val searchCharacter: LiveData<List<CharactersRvModel>> = _searchCharacter
     fun searchCharacter(name: String) {
         vmScope.launch {
             loading.postValue(true)

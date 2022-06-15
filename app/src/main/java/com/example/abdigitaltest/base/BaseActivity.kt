@@ -18,7 +18,7 @@ import javax.inject.Inject
 abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater) -> B) :
     AppCompatActivity() {
     lateinit var binding: B
-//    var navController: NavController? = null
+    var navController: NavController? = null
     var bottomNavController: NavController? = null
 
 

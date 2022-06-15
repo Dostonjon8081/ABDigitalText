@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_navigation"
+    app:startDestination="@id/mainFragment">
+
+
+    <fragment
+        tools:layout="@layout/fragment_main"
+        android:id="@+id/mainFragment"
+        android:name="com.example.abdigitaltest.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.example.abdigitaltest.core_fragment.home.character_detail.CharacterDetailFragment"
+        android:label="CharacterDetailFragment" >
+        <argument
+            app:nullable="true"
+            app:argType="com.example.abdigitaltest.core_fragment.home.CharactersRvModel"
+            android:defaultValue="@null"
+            android:name="detailArg"/>
+    </fragment>
+
+</navigation>

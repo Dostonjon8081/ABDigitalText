@@ -6,36 +6,83 @@ import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 interface IHomeInteractor {
-    suspend fun getCharacters(): CharactersDto
-    suspend fun searchCharacter(name: String): CharactersDto
+    suspend fun getCharacters(): List<CharactersRvModel>
+    suspend fun searchCharacter(name: String): List<CharactersRvModel>
 }
 
 class HomeInteractorImpl @Inject constructor(
     private val repository: IHomeRepository
 ) : IHomeInteractor, BaseApiResponse() {
-    override suspend fun getCharacters(): CharactersDto {
-        var charactersDto: CharactersDto? = null
+    override suspend fun getCharacters(): List<CharactersRvModel> {
+        var list = mutableListOf<CharactersRvModel>()
         repository.getCharacters().collect {
+            list.clear()
             when (it) {
-                is NetworkResult.Success -> charactersDto = it.data!!
+                is NetworkResult.Success -> {
+                    it.data!!.results?.forEach { dto ->
+                        list.add(
+                            CharactersRvModel(
+                                dto.name!!,
+                                dto.height!!,
+                                dto.mass!!,
+                                dto.hair_color!!,
+                                dto.skin_color!!,
+                                dto.eye_color!!,
+                                dto.birth_year!!,
+                                dto.gender!!,
+                                dto.homeworld!!,
+                                dto.films!!,
+                                dto.species!!,
+                                dto.vehicles!!,
+                                dto.starships!!,
+                                dto.created!!,
+                                dto.edited!!,
+                                dto.url!!
+                            )
+                        )
+                    }
+                }
                 is NetworkResult.Error -> {}
                 is NetworkResult.Loading -> {}
             }
         }
-        return charactersDto!!
+        return list
     }
 
-    override suspend fun searchCharacter(name: String): CharactersDto {
-        var charactersDto: CharactersDto? = null
-
+    override suspend fun searchCharacter(name: String): List<CharactersRvModel> {
+        var list = mutableListOf<CharactersRvModel>()
         repository.searchCharacters(name).collect {
+            list.clear()
             when (it) {
-                is NetworkResult.Success -> charactersDto = it.data!!
+                is NetworkResult.Success -> {
+                    it.data!!.results?.forEach { dto ->
+                        list.add(
+                            CharactersRvModel(
+                                dto.name!!,
+                                dto.height!!,
+                                dto.mass!!,
+                                dto.hair_color!!,
+                                dto.skin_color!!,
+                                dto.eye_color!!,
+                                dto.birth_year!!,
+                                dto.gender!!,
+                                dto.homeworld!!,
+                                dto.films!!,
+                                dto.species!!,
+                                dto.vehicles!!,
+                                dto.starships!!,
+                                dto.created!!,
+                                dto.edited!!,
+                                dto.url!!
+                            )
+                        )
+                    }
+                }
                 is NetworkResult.Error -> {}
                 is NetworkResult.Loading -> {}
             }
         }
-        return charactersDto!!
+        return list
     }
 
 }

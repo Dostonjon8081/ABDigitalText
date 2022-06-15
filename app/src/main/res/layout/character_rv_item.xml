@@ -30,10 +30,8 @@
             android:layout_height="48dp"
             android:layout_gravity="end"
             android:layout_weight="0.2"
-            android:background="@drawable/fav_selector"
-            android:clickable="true"
-            android:contentDescription="@string/app_name"
-            android:focusable="true"
+            android:src="@drawable/ic_fav_empty"
+
             android:minWidth="24dp"
             android:minHeight="24dp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
