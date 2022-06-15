@@ -1,7 +1,6 @@
 package com.example.abdigitaltest.util.network
 
 import com.example.abdigitaltest.core_fragment.home.CharactersDto
-import com.example.abdigitaltest.core_fragment.home.CharactersModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

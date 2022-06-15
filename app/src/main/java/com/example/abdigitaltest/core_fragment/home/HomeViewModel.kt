@@ -1,5 +1,7 @@
 package com.example.abdigitaltest.core_fragment.home
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.abdigitaltest.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,24 +16,29 @@ class HomeViewModel @Inject constructor(
     init {
         Timber.d("viewmodel created")
         getCharacters()
-        searchCharacter()
+
     }
 
-//    private val _charachtersResponseApi:MutableLiveData<Event<NetworkResult<CharactersResponseModel>>> = MutableLiveData()
-//       val charactersResponseApi:LiveData<Event<NetworkResult<CharactersResponseModel>>> = _charachtersResponseApi
+    private val _charactersResponseApi: MutableLiveData<CharactersDto> = MutableLiveData()
+    val charactersResponseApi: LiveData<CharactersDto> = _charactersResponseApi
 
-    private fun getCharacters() {
+    fun getCharacters() {
         vmScope.launch {
             loading.postValue(true)
-            interactor.getCharacters()
+            _charactersResponseApi.postValue(interactor.getCharacters())
         }.invokeOnCompletion {
             loading.postValue(false)
         }
     }
 
-    private fun searchCharacter() {
+    private val _searchCharacter: MutableLiveData<CharactersDto> = MutableLiveData()
+    val searchCharacter: LiveData<CharactersDto> = _searchCharacter
+    fun searchCharacter(name: String) {
         vmScope.launch {
-            interactor.searchCharacter("Luke Skywalker")
+            loading.postValue(true)
+            _searchCharacter.postValue(interactor.searchCharacter(name))
+        }.invokeOnCompletion {
+            loading.postValue(false)
         }
     }
 }

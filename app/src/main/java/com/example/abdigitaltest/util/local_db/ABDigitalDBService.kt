@@ -5,7 +5,7 @@ import androidx.room.Query
 
 @Dao
 interface ABDigitalDBService {
-    @Query("SELECT * FROM CHARACTERS")
+    @Query("SELECT * FROM CHARACTER")
     suspend fun getAll(): List<CharacterEntity>
 
 

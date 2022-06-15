@@ -4,14 +4,32 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:queryHint="search"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/search_character"/>
+
     <androidx.core.widget.ContentLoadingProgressBar
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:id="@+id/home_pb"
+        android:visibility="gone"
         android:theme="@style/Widget.AppCompat.ProgressBar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/characters_rv"
+        app:layout_constraintTop_toBottomOf="@id/search_character"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

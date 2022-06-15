@@ -1,17 +1,12 @@
 package com.example.abdigitaltest.core_fragment.home
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-
-data class CharactersModel(
-    val count: Int=0,
-    val next: String="",
-    val previous: String?="previous",
-    val results: List<ResultCharacter>?
-)
-
-
-data class ResultCharacter(
+interface Person
+@Parcelize
+data class CharactersRvModel(
     val name: String="",
     val height: String="",
     val mass: String="",
@@ -28,4 +23,4 @@ data class ResultCharacter(
     val created: String,
     val edited: String,
     val url: String
-    )
+    ):Parcelable,Person

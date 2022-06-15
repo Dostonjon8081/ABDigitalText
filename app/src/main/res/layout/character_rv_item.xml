@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/characters_rv_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="@color/lineColor"
+    android:elevation="2dp"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/rv_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1.8"
+            android:textSize="24sp"
+            tools:text="name" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fav_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_weight="0.2"
+            android:background="@drawable/fav_selector"
+            android:clickable="true"
+            android:contentDescription="@string/app_name"
+            android:focusable="true"
+            android:minWidth="24dp"
+            android:minHeight="24dp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_mass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_hair_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_skin_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_eye_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_birth_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_home_world"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_films"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_species"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_vehicles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_start_ship"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_created"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_edited"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rv_item_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="name" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
