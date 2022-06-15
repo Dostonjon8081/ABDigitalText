@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
@@ -53,7 +54,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.VH>() {
         private val created = view.findViewById<TextView>(R.id.rv_item_created)
         private val edited = view.findViewById<TextView>(R.id.rv_item_edited)
         private val url = view.findViewById<TextView>(R.id.rv_item_url)
-        private val favBtn = view.findViewById<AppCompatImageView>(R.id.fav_btn)
+        private val favBtn = view.findViewById<ImageView>(R.id.fav_btn)
 
         @SuppressLint("SetTextI18n")
         fun onBind(resultCharacterDto: ResultCharacterDto,iClickCharacterItem: IClickCharacterItem) {
