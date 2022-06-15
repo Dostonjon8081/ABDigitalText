@@ -34,8 +34,9 @@ class HomeRepositoryImpl @Inject constructor(
         if (networkResult.isSuccessful) {
             val resultBody = networkResult.body()
             if (resultBody != null) {
-                resultBody.results?.get(0)?.let { logd(it?.name?:"empty") }
+                val model = DtoMapper.map(resultBody)
 
+                logd(model.toString())
             }
         }
 
