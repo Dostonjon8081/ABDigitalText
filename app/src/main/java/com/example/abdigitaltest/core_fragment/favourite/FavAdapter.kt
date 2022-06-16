@@ -1,21 +1,23 @@
-package com.example.abdigitaltest.core_fragment.home
+package com.example.abdigitaltest.core_fragment.favourite
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.abdigitaltest.R
+import com.example.abdigitaltest.core_fragment.home.CharactersRvModel
 import com.example.abdigitaltest.databinding.CharacterRvItemBinding
+import com.example.abdigitaltest.databinding.FavRvItemBinding
 
-class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.VH>() {
+class FavAdapter : RecyclerView.Adapter<FavAdapter.VH>() {
 
     private val list = mutableListOf<CharactersRvModel>()
-    private lateinit var click: IClickCharacterItem
+    private lateinit var click: IClickFavItem
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
 
         val binding =
-            CharacterRvItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            FavRvItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return VH(binding, click)
     }
 
@@ -25,43 +27,34 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.VH>() {
 
     override fun getItemCount(): Int = list.size
 
-    fun initDat(list: List<CharactersRvModel>) {
+    fun initData(list: List<CharactersRvModel>) {
         this.list.clear()
         this.list.addAll(list)
-        notifyItemRangeChanged(0, list.size - 1)
+        notifyDataSetChanged()
     }
 
-    fun initClick(iClickCharacterItem: IClickCharacterItem) {
-        click = iClickCharacterItem
+    fun initClick(iClickFavItem: IClickFavItem) {
+        click = iClickFavItem
     }
 
     class VH(
-        private val binding: CharacterRvItemBinding,
-        private val iClickCharacterItem: IClickCharacterItem
+        private val binding: FavRvItemBinding,
+        private val iClickFavItem: IClickFavItem
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var model: CharactersRvModel
 
         init {
-            binding.root.setOnClickListener { iClickCharacterItem.clickedItem(model) }
+            binding.root.setOnClickListener { iClickFavItem.clickedItem(model) }
 
             binding.favBtn.setOnClickListener {
-                if (!model.isFavourite) {
-                    binding.favBtn.setImageResource(R.drawable.ic_fav)
-                    model.isFavourite = true
-                    iClickCharacterItem.addFav(model)
-                } else {
-                    binding.favBtn.setImageResource(R.drawable.ic_fav_empty)
-                    model.isFavourite = false
-                    iClickCharacterItem.deleteFav(model)
-                }
+                iClickFavItem.deleteFav(model.name)
+                model.isFavourite = false
             }
         }
 
         @SuppressLint("SetTextI18n")
-        fun onBind(
-            charactersRvModel: CharactersRvModel,
-        ) {
+        fun onBind(charactersRvModel: CharactersRvModel) {
             model = charactersRvModel
             binding.rvItemName.text = "name: ${model.name}"
             binding.rvItemHeight.text = "height: ${model.height}"

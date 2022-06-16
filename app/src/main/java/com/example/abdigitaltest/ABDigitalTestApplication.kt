@@ -7,12 +7,4 @@ import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
-class ABDigitalTestApplication : MultiDexApplication() {
-
-    override fun onCreate() {
-        super.onCreate()
-//        if (BuildConfig.DEBUG)
-//            Timber.plant(Timber.DebugTree())
-
-    }
-}
+class ABDigitalTestApplication : MultiDexApplication()

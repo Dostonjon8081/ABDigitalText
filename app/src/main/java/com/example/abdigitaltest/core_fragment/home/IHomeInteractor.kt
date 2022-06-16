@@ -1,5 +1,6 @@
 package com.example.abdigitaltest.core_fragment.home
 
+import com.example.abdigitaltest.util.local_db.CharacterEntity
 import com.example.abdigitaltest.util.network.BaseApiResponse
 import com.example.abdigitaltest.util.network.NetworkResult
 import kotlinx.coroutines.flow.collect
@@ -8,13 +9,15 @@ import javax.inject.Inject
 interface IHomeInteractor {
     suspend fun getCharacters(): List<CharactersRvModel>
     suspend fun searchCharacter(name: String): List<CharactersRvModel>
+    suspend fun deleteFav(model: CharactersRvModel)
+    suspend fun addFav(model: CharactersRvModel)
 }
 
 class HomeInteractorImpl @Inject constructor(
     private val repository: IHomeRepository
-) : IHomeInteractor, BaseApiResponse() {
+) : IHomeInteractor{
     override suspend fun getCharacters(): List<CharactersRvModel> {
-        var list = mutableListOf<CharactersRvModel>()
+        val list = mutableListOf<CharactersRvModel>()
         repository.getCharacters().collect {
             list.clear()
             when (it) {
@@ -50,7 +53,7 @@ class HomeInteractorImpl @Inject constructor(
     }
 
     override suspend fun searchCharacter(name: String): List<CharactersRvModel> {
-        var list = mutableListOf<CharactersRvModel>()
+        val list = mutableListOf<CharactersRvModel>()
         repository.searchCharacters(name).collect {
             list.clear()
             when (it) {
@@ -83,6 +86,53 @@ class HomeInteractorImpl @Inject constructor(
             }
         }
         return list
+    }
+
+    override suspend fun deleteFav(model: CharactersRvModel) {
+
+        repository.deleteFav(
+            CharacterEntity(
+                model.name,
+                model.height,
+                model.mass,
+                model.hair_color,
+                model.skin_color,
+                model.eye_color,
+                model.birth_year,
+                model.gender,
+                model.homeworld,
+                model.films,
+                model.species,
+                model.vehicles,
+                model.starships,
+                model.created,
+                model.edited,
+                model.url,
+                model.isFavourite
+            )
+        )
+    }
+
+    override suspend fun addFav(model: CharactersRvModel) {
+        repository.addFav( CharacterEntity(
+             model.name,
+            model.height,
+            model.mass,
+            model.hair_color,
+            model.skin_color,
+            model.eye_color,
+            model.birth_year,
+            model.gender,
+            model.homeworld,
+            model.films,
+            model.species,
+            model.vehicles,
+            model.starships,
+            model.created,
+            model.edited,
+            model.url,
+            model.isFavourite
+        ))
     }
 
 }

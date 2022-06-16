@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_mainFragment_to_characterDetailFragment"
             app:destination="@id/characterDetailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_favDetailFragment"
+            app:destination="@id/favDetailFragment" />
 
     </fragment>
 
@@ -21,6 +24,16 @@
         android:id="@+id/characterDetailFragment"
         android:name="com.example.abdigitaltest.core_fragment.home.character_detail.CharacterDetailFragment"
         android:label="CharacterDetailFragment" >
+        <argument
+            app:nullable="true"
+            app:argType="com.example.abdigitaltest.core_fragment.home.CharactersRvModel"
+            android:defaultValue="@null"
+            android:name="detailArg"/>
+    </fragment>
+    <fragment
+        android:id="@+id/favDetailFragment"
+        android:name="com.example.abdigitaltest.core_fragment.favourite.fav_detail.FavDetailFragment"
+        android:label="FavDetailFragment" >
         <argument
             app:nullable="true"
             app:argType="com.example.abdigitaltest.core_fragment.home.CharactersRvModel"

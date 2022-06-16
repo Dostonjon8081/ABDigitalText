@@ -41,4 +41,16 @@ class HomeViewModel @Inject constructor(
             loading.postValue(false)
         }
     }
+
+    fun deleteFav(model: CharactersRvModel) {
+        vmScope.launch {
+            interactor.deleteFav(model)
+        }
+    }
+
+    fun addFav(model: CharactersRvModel) {
+        vmScope.launch {
+            interactor.addFav(model)
+        }
+    }
 }

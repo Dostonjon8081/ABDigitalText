@@ -7,9 +7,6 @@ import retrofit2.http.Query
 
 interface NetworkService {
 
-//    @GET("people/")
-//    suspend fun searchCharacter(@Query("search") name:String): Response<*>
-
     @GET("people")
     suspend fun getCharacters():Response<CharactersDto>
 

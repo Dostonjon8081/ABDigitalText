@@ -69,10 +69,6 @@ dependencies {
     def fragment_version = "1.4.0-alpha05"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
-//    //navigation
-//    def navVersion = "2.3.5"
-//    implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
-//    implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
     //navigation
     def navigation_version = "2.4.0-alpha10"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version"
@@ -85,24 +81,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.2"
 
-    //firebase crash
-//    implementation platform('com.google.firebase:firebase-bom:28.4.1')
-//    implementation 'com.google.firebase:firebase-crashlytics-ktx'
-//    implementation 'com.google.firebase:firebase-analytics-ktx'
-//    implementation 'com.google.firebase:firebase-crash:16.2.1'
-
-//    //firebase crash
-//    implementation 'com.google.firebase:firebase-database-ktx'
-
-    //firebase deep link
-//    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
-
-    //progressbar
-//    implementation 'com.github.shadowalker77:wp7progressbar:1.1.0'
-
-    //swipe refresh
-    implementation('androidx.swiperefreshlayout:swiperefreshlayout:1.1.0')
-
     //multidex
     def multidex_version = "2.0.1"
     implementation("androidx.multidex:multidex:$multidex_version")
@@ -112,5 +90,8 @@ dependencies {
 
     //chucker
     implementation "com.github.chuckerteam.chucker:library:3.5.2"
+
+    //check connection
+    implementation 'com.github.muddassir235:connection_checker:1.7'
 
 }

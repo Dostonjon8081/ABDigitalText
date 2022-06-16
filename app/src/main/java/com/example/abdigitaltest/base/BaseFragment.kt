@@ -16,18 +16,6 @@ abstract class BaseFragment<VB : ViewBinding>(
     private var _binding: VB? = null
     val binding get() = _binding!!
 
-//    protected val crashlytics by lazy { Firebase.crashlytics }
-
-    /*  override fun onAttach(context: Context) {
-          activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-              override fun handleOnBackPressed() {
-                  getBaseActivity {
-                      it.navController?.popBackStack()
-                  }
-              }
-          })
-          super.onAttach(context)
-      }*/
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,6 +24,8 @@ abstract class BaseFragment<VB : ViewBinding>(
         _binding = inflate.invoke(inflater, container, false)
         return binding.root
     }
+
+
 
     fun getBaseActivity(run: (BaseActivity<*>) -> Unit) {
         (activity as? BaseActivity<*>)?.let {

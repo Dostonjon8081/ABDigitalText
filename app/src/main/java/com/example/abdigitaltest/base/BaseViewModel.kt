@@ -13,13 +13,8 @@ import javax.inject.Inject
 abstract class BaseViewModel : ViewModel() {
     val loading: MutableLiveData<Boolean> = MutableLiveData()
     val handler = CoroutineExceptionHandler { _, exception ->
-//        Timber.d("errorProcess - $exception")
+        Timber.d("errorProcess - $exception")
     }
 
     val vmScope = viewModelScope + handler + Dispatchers.IO
-
-    override fun onCleared() {
-        super.onCleared()
-    }
-
 }
