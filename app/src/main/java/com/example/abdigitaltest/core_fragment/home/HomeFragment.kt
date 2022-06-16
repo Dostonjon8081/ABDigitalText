@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         "Connected"
                     }
                     ConnectionState.SLOW -> {
-                        homeViewModel.getCharacters()
+//                        homeViewModel.getCharacters()
                         "Slow Internet Connection"
                     }
                     else -> {
