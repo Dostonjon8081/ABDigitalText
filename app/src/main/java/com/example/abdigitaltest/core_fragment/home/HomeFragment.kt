@@ -24,7 +24,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun findFragmentByTag(tag: String?): Fragment? =
         requireActivity().supportFragmentManager.findFragmentByTag(tag)
 
-    private lateinit var dialog: CustomDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,8 +63,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 when (it) {
                     ConnectionState.CONNECTED -> {
                         homeViewModel.getCharacters()
-                        dialog.dismiss()
                         "Connected"
+                    }
+                    ConnectionState.SLOW -> {
+                        homeViewModel.getCharacters()
+                        "Slow Internet Connection"
                     }
                     else -> {
                         "Disconnected!\n Please check your network"
@@ -98,10 +100,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         if (foundFragment != null && foundFragment.isAdded) return
 
 
-        dialog = CustomDialog.newInstance(
+        val dialog = CustomDialog.newInstance(
             message,
+            "cancel",
+            "ok",
             true
         )
+
+        dialog.callback = object : CustomDialog.OnDialogCallback {
+            override fun onSuccess() {
+                dialog.dismiss()
+            }
+
+            override fun onCancel() {
+                dialog.dismiss()
+            }
+        }
 
         dialog.show(requireActivity().supportFragmentManager, CustomDialog::class.java.name)
     }

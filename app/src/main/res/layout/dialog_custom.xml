@@ -28,7 +28,7 @@
             android:textColor="@color/black"
             android:textSize="18dp" />
 
-      <!--  <TextView
+        <TextView
             android:id="@+id/tvBtnSuccess"
             android:layout_width="match_parent"
             android:layout_height="32dp"
@@ -49,9 +49,9 @@
             android:textSize="16dp"
             tool:text="OK">
 
-        </TextView>-->
+        </TextView>
 
-   <!--     <TextView
+        <TextView
             android:id="@+id/tvBtnCancel"
             android:layout_width="match_parent"
             android:layout_height="32dp"
@@ -68,7 +68,7 @@
             android:textSize="16dp"
             android:visibility="gone">
 
-        </TextView>-->
+        </TextView>
 
         <Space
             android:layout_width="match_parent"
