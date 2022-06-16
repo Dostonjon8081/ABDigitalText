@@ -28,7 +28,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.VH>() {
     fun initDat(list: List<CharactersRvModel>) {
         this.list.clear()
         this.list.addAll(list)
-        notifyItemRangeChanged(0, list.size - 1)
+        notifyDataSetChanged()
     }
 
     fun initClick(iClickCharacterItem: IClickCharacterItem) {
